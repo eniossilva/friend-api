@@ -3,6 +3,7 @@ package com.pluralsight.friendsapi.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,10 @@ public class Friend {
     private int age;
 
     @JsonIgnore
-    boolean married;
+    private boolean married;
+
+    @Embedded
+    private Address address;
 
     public int getId() {
         return id;
@@ -64,5 +68,13 @@ public class Friend {
 
     public void setMarried(boolean married) {
         this.married = married;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
